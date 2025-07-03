@@ -1,4 +1,4 @@
-// src/types/author.ts
+
 
 export interface Author {
   _id: string
@@ -24,7 +24,7 @@ export interface Author {
   bio?: PortableTextBlock[]
 }
 
-// Portable Text Block, stark vereinfacht (für den "block" Typ)
+
 export interface PortableTextBlock {
   _key?: string
   _type: 'block'
@@ -35,6 +35,10 @@ export interface PortableTextBlock {
     text: string
     marks?: string[]
   }>
-  markDefs?: any[]
+  markDefs?: Array<{
+    _key: string
+    _type: 'link'
+    href: string
+  }>
   listItem?: string
 }

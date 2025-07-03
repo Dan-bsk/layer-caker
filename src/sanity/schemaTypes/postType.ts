@@ -4,6 +4,11 @@ import {defineArrayMember, defineField, defineType} from 'sanity'
 export const postType = defineType({
   name: 'post',
   title: 'Post',
+  validation: rule => rule.custom((value, context) => {
+    const parent = context?.parent as {asset?: {_ref?: string}}
+
+    return !value && parent?.asset?._ref ? 'Alt text is required when an image is present' : true
+  }),
   type: 'document',
   icon: DocumentTextIcon,
   fields: [
